@@ -96,10 +96,10 @@ interpolate_nleach_table <- function(wb, gt1man, val2u){
   # this in order to ensure low predicted values in the low range (shallow depth groundwater)
   d3[,nloss2 :=as.numeric(nloss2)]
   d3[,ghg := as.numeric(ghg)]
-  d3[,lognloss := log(10*nloss2)]
-  m1 = lm(lognloss~ghg*glg+gewas+bodem,data=d3)
+  d3[,sqrtloss := sqrt(nloss2)]
+  m1 = lm(sqrtloss~log(ghg)+gewas+bodem,data=d3)
   d3[,pred := predict(m1,newdata = d3)]
-  d3[,pred := exp(pred)*0.1]
+  d3[,pred := pred^2]
   d3[,pred := pmax(0.01,round(pred,2))]
   
   # add a column in which only NA are filled with prediction
@@ -134,7 +134,7 @@ library(data.table)
 nleach_gw_table <- interpolate_nleach_table("gw", "Y", 'filled') # with prescribed values for GT1
 
 # remove unnecessary columns
-nleach_gw_table[, c('filled', 'pred', 'nloss', 'nloss2', 'orifill', 'gt', 'lognloss') := NULL]
+nleach_gw_table[, c('filled', 'pred', 'nloss', 'nloss2', 'orifill', 'gt', 'sqrtloss') := NULL]
 # save as RData
 # usethis::use_data(nleach_gw_table, version = 3, overwrite = TRUE, compress = 'xz')
 
@@ -143,7 +143,7 @@ nleach_ow_table <- interpolate_nleach_table("ow", "N", 'filled') # without presc
 #nleach_ow_table <- interpolate_nleach_table("ow", "Y", 'filled') # with prescribed values for GT1
 
 # remove unnecessary columns
-nleach_ow_table[, c('filled', 'pred', 'nloss', 'nloss2', 'orifill', 'gt', 'lognloss') := NULL]
+nleach_ow_table[, c('filled', 'pred', 'nloss', 'nloss2', 'orifill', 'gt', 'sqrtloss') := NULL]
 # save as RData
 
 # Combine both leaching tables

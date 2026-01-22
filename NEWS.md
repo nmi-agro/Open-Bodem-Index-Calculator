@@ -1,3 +1,8 @@
+# OBIC 4.2.0.999
+## Changed
+* Adjusted the interpolation of nitrogen leaching to surface and groundwater recorded
+in table nleach_table
+
 # OBIC 4.2.0 2025-12-18
 ## Added
 * Function ind_gw_target() to modify I_H_GWR (renamed to I_E_GWR) with a correction factor based on
