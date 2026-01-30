@@ -1,7 +1,14 @@
-# OBIC 4.2.0.999
+# OBIC 4.2.1.999
 ## Changed
 * Adjusted the interpolation of nitrogen leaching to surface and groundwater recorded
 in table nleach_table
+
+# OBIC 4.2.1 2026-01-30
+## Added
+* Adds GitHub action to check the package on R-hub
+
+## Fixed
+* Fixes external link at `obic_water_functions` 
 
 # OBIC 4.2.0 2025-12-18
 ## Added
