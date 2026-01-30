@@ -1,3 +1,10 @@
+# OBIC 4.2.1 2026-01-30
+## Added
+* Adds GitHub action to check the package on R-hub
+
+## Fixed
+* Fixes external link at `obic_water_functions` 
+
 # OBIC 4.2.0 2025-12-18
 ## Added
 * Function ind_gw_target() to modify I_H_GWR (renamed to I_E_GWR) with a correction factor based on
