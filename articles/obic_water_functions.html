@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">OBIC</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">4.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">4.2.1</span>
       </span>
     </div>
 
@@ -91,9 +91,9 @@
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Description of the OBI-water functions</h1>
             
-            <h4 data-toc-skip class="date">2025-12-18</h4>
+            <h4 data-toc-skip class="date">2026-01-30</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/AgroCares/Open-Bodem-Index-Calculator/blob/v4.2.0/vignettes/obic_water_functions.Rmd" class="external-link"><code>vignettes/obic_water_functions.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/AgroCares/Open-Bodem-Index-Calculator/blob/master/vignettes/obic_water_functions.Rmd" class="external-link"><code>vignettes/obic_water_functions.Rmd</code></a></small>
       <div class="hidden name"><code>obic_water_functions.Rmd</code></div>
 
     </div>
@@ -212,20 +212,20 @@ score for grassland is calculated using a different formula, it reaches
 a score of 1 at a precipitation surplus of 250 mm (grey line).</p>
 <pre><code><span><span class="co">#&gt; Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Please use `linewidth` instead.</span></span>
-<span><span class="co">#&gt; <span style="color: #555555;">This warning is displayed once every 8 hours.</span></span></span>
+<span><span class="co">#&gt; <span style="color: #555555;">This warning is displayed once per session.</span></span></span>
 <span><span class="co">#&gt; <span style="color: #555555;">Call `lifecycle::last_lifecycle_warnings()` to see where this warning was</span></span></span>
 <span><span class="co">#&gt; <span style="color: #555555;">generated.</span></span></span></code></pre>
-<p><img src="obic_water_functions_files/figure-html/GW%20recharge-1.png" class="r-plt" width="384" style="display: block; margin: auto;"></p>
+<p><img src="obic_water_functions_files/figure-html/GW%20recharge-1.png" class="r-plt" alt="" width="384" style="display: block; margin: auto;"></p>
 <p>The OBIC already contains a function for saturated permeability, this
 was then converted to unsaturated permeability based on Wösten et
 al. (2001). The formula for this conversion is as follows:
-<img src="Formula_K-unsaturated.png" class="r-plt" width="45%" height="45%" style="display: block; margin: auto;"></p>
+<img src="Formula_K-unsaturated.png" class="r-plt" alt="" width="45%" height="45%" style="display: block; margin: auto;"></p>
 <p>Here Ksat is the saturated permeability in m/d, h is the hydraulic
 head at the inflection point, the parameters α, n and l determine the
 shape of the curve and are calculated with the OBIC function
 pFpara_ptf_Wosten2001. The logistic function for assessing the indicator
 score can be found below.</p>
-<p><img src="obic_water_functions_files/figure-html/Unsaturated%20permeability-1.png" class="r-plt" width="384" style="display: block; margin: auto;"></p>
+<p><img src="obic_water_functions_files/figure-html/Unsaturated%20permeability-1.png" class="r-plt" alt="" width="384" style="display: block; margin: auto;"></p>
 </div>
 <div class="section level3">
 <h3 id="nitrogen-use-efficiency">Nitrogen use efficiency<a class="anchor" aria-label="anchor" href="#nitrogen-use-efficiency"></a>
@@ -272,7 +272,7 @@ rated as extremely poor (score = 0) once the leaching exceeds this
 critical standard. To improve soil quality such that little nitrate
 leaches out, soil quality is assessed such that the score decreases
 sharply from a leaching of 20 mg NO3 L-1.</p>
-<p><img src="obic_water_functions_files/figure-html/N-efficiency-1.png" class="r-plt" width="384" style="display: block; margin: auto;"></p>
+<p><img src="obic_water_functions_files/figure-html/N-efficiency-1.png" class="r-plt" alt="" width="384" style="display: block; margin: auto;"></p>
 </div>
 <div class="section level3">
 <h3 id="pesticide-leaching">Pesticide leaching<a class="anchor" aria-label="anchor" href="#pesticide-leaching"></a>
@@ -324,7 +324,7 @@ has a negative effect on the groundwater recharge score, a trade-off.
 Since a precipitation surplus of 400 mm has been identified as optimal
 in the precipitation surplus function, this value was used for
 calibration of this indicator score.
-<img src="obic_water_functions_files/figure-html/Pesticide%20leaching-1.png" class="r-plt" width="384" style="display: block; margin: auto;"></p>
+<img src="obic_water_functions_files/figure-html/Pesticide%20leaching-1.png" class="r-plt" alt="" width="384" style="display: block; margin: auto;"></p>
 </div>
 <div class="section level2">
 <h2 class="unnumbered" id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
@@ -332,7 +332,7 @@ calibration of this indicator score.
 <div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
 <div id="ref-CommissieDeskundigenMeststoffenwet2017" class="csl-entry">
 Commissie Deskundigen Meststoffenwet. 2017. <span>“<span class="nocase">CDM-advies ‘Groenbemesters’ 17-02-2017</span>.”</span>
-Wageningen: WOT Natuur &amp; Milieu. <a href="https://www.wur.nl/upload_mm/e/b/5/62ea1645-e0ae-41bf-9674-472b422ff1e7_1705577_Oene%20Oenema%20bijlage%201.pdf" class="external-link">https://www.wur.nl/upload_mm/e/b/5/62ea1645-e0ae-41bf-9674-472b422ff1e7_1705577_Oene%20Oenema%20bijlage%201.pdf</a>.
+Wageningen: WOT Natuur &amp; Milieu. <a href="https://edepot.wur.nl/703965" class="external-link">https://edepot.wur.nl/703965</a>.
 </div>
 <div id="ref-Geurts2021" class="csl-entry">
 Geurts, J, A van Loon, and G Ros. 2021. <span>“<span class="nocase">Gezonde bodem , gezond watersysteem, BTO rapport
