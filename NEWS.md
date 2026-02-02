@@ -1,4 +1,4 @@
-# OBIC 4.2.1.999
+# OBIC 4.2.2 2026-02-02
 ## Changed
 * Adjusted the interpolation of nitrogen leaching to surface and groundwater recorded
 in table nleach_table
