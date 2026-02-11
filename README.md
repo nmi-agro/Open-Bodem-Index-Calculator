@@ -2,8 +2,8 @@
 
 <!-- badges: start -->
 [![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-green.svg)](https://lifecycle.r-lib.org/articles/stages.html)
-[![R-CMD-check](https://github.com/AgroCares/Open-Bodem-Index-Calculator/actions/workflows/check-standard.yaml/badge.svg)](https://github.com/AgroCares/Open-Bodem-Index-Calculator/actions/workflows/check-standard.yaml)
-[![Codecov test coverage](https://codecov.io/gh/AgroCares/Open-Bodem-Index-Calculator/branch/master/graph/badge.svg)](https://app.codecov.io/gh/AgroCares/Open-Bodem-Index-Calculator?branch=master)
+[![R-CMD-check](https://github.com/nmi-agro/Open-Bodem-Index-Calculator/actions/workflows/check-standard.yaml/badge.svg)](https://github.com/nmi-agro/Open-Bodem-Index-Calculator/actions/workflows/check-standard.yaml)
+[![Codecov test coverage](https://codecov.io/gh/nmi-agro/Open-Bodem-Index-Calculator/branch/master/graph/badge.svg)](https://app.codecov.io/gh/nmi-agro/Open-Bodem-Index-Calculator?branch=master)
 [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/OBIC)](https://cran.r-project.org/package=OBIC)
 [![](https://cranlogs.r-pkg.org/badges/grand-total/OBIC)](https://cran.r-project.org/package=OBIC)
 <!-- badges: end -->
@@ -19,7 +19,7 @@ More information about the Open Bodem Index can be found at [Open Bodem Index](h
 install.packages("OBIC")
 
 # Or install the development version from GitHub
-remotes::install_github("AgroCares/Open-Bodem-Index-Calculator")
+remotes::install_github("nmi-agro/Open-Bodem-Index-Calculator")
 
 # Load the OBIC package in your script
 library("OBIC")
@@ -27,7 +27,7 @@ library("OBIC")
 Previous releases of `OBIC` can be found at `releases` section on the GitHub repository.
 
 ## Documentation
-Documentation of the R functions in the OBIC package can be found [here](https://agrocares.github.io/Open-Bodem-Index-Calculator/)
+Documentation of the R functions in the OBIC package can be found [here](https://nmi-agro.github.io/Open-Bodem-Index-Calculator/)
 
 ## More information
 The [Open Bodem Index](https://openbodemindex.nl) (OBI) is a collaboration between Wageningen UR, NMI and FarmHack in collaboration with agricultural experts. 
