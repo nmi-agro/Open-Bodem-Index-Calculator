@@ -150,7 +150,7 @@ calc_nleach <- function(B_SOILTYPE_AGR, B_LU_BRP, B_GWL_CLASS, D_NLV, B_AER_CBS,
 ind_nretention <- function(D_NW, leaching_to){
   
   # Check inputs
-  checkmate::assert_numeric(D_NW, lower = 0 , upper = 250, any.missing = FALSE)
+  checkmate::assert_numeric(D_NW, lower = 0 , upper = 300, any.missing = FALSE)
   checkmate::assert_choice(leaching_to, choices = c("gw", "ow"), null.ok = FALSE)
   
   if (leaching_to == "gw") {
