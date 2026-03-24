@@ -1,3 +1,7 @@
+# OBIC 4.2.4 2026-03-23
+## Fixed
+* Set maximal value of `D_NW` to 300 in `ind_nretention` to prevent errors for high leaching values [OBI-37]
+
 # OBIC 4.2.3 2026-02-11
 ## Changed
 * Rename organization of repo to `nmi-agro`
