@@ -528,6 +528,6 @@ crop_code,crop_name,crop_waterstress,crop_intensity,crop_eos,crop_eos_residue,cr
 7139,"notenbomen, hazelnoot",boomteelt,overig,0,0,akkerbouw,other,16,arable,overig,akkerbouw,mais,boomteelt,175,165,165,165,165,corylus avellana,groot fruit,fruit
 7193,"notenbomen, walnoot",boomteelt,overig,0,0,akkerbouw,other,16,arable,overig,akkerbouw,mais,boomteelt,175,165,165,165,165,juglans regia,groot fruit,fruit
 7194,"notenbomen, overig",boomteelt,overig,0,0,akkerbouw,other,16,arable,overig,akkerbouw,mais,boomteelt,175,165,165,165,165,"",groot fruit,fruit
-7195,bosui,zomergroenten,overig,300,0,akkerbouw,other,13,arable,overig,akkerbouw,mais,groenteteelt,120,120,120,120,120,allium,"witlof, selderij, uien",zaaiuien
+7195,bosui,zomergroenten,overig,300,0,akkerbouw,other,4,arable,overig,akkerbouw,mais,groenteteelt,120,120,120,120,120,allium,"witlof, selderij, uien",zaaiuien
 7196,lente-ui,zomergroenten,overig,300,0,akkerbouw,other,4,arable,overig,akkerbouw,mais,groenteteelt,120,120,120,120,120,allium,"witlof, selderij, uien",zaaiuien
-7197,bamboe,overig boomteelt,overig,0,0,akkerbouw,other,4,nature,gras,gras,gras,boomteelt,90,90,90,90,90,"",laanbomen_onderstammen,grasland
+7197,bamboe,overig boomteelt,overig,0,0,akkerbouw,other,16,nature,gras,gras,gras,boomteelt,90,90,90,90,90,"",laanbomen_onderstammen,grasland
