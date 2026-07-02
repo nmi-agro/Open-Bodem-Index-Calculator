@@ -1,4 +1,15 @@
 # OBIC 4.2.4 2026-03-23
+## Added
+* New cultivations for BRP 2026 to `crops.obic` [crop_name (crop_code)]:
+  * Anna Paulowna (7136)
+  * Notenbomen, hazelnoot (7139)
+  * Notenbomen, walnoot (7193)
+  * Notenbomen, Overig (7194)
+  * Bosui (7195)
+  * Lente-ui (7196)
+  * Bamboe (7197)
+  
+# OBIC 4.2.4 2026-03-23
 ## Fixed
 * Set maximal value of `D_NW` to 300 in `ind_nretention` to prevent errors for high leaching values [OBI-37]
 
