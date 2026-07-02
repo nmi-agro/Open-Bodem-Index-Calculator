@@ -1,4 +1,4 @@
-# OBIC 4.2.4 2026-03-23
+# OBIC 4.3.0 2026-07-02
 ## Added
 * New cultivations for BRP 2026 to `crops.obic` [crop_name (crop_code)]:
   * Anna Paulowna (7136)
