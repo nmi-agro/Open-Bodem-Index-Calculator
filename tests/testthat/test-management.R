@@ -342,3 +342,41 @@ test_that('add_management enforces the use of green manure when growing maize or
     )$M_GREEN == FALSE
   )
 })
+
+test_that("compost is credited on grassland for any application frequency", {
+  args <- list(
+    A_SOM_LOI = 4.5,
+    B_LU_BRP = 265,
+    B_SOILTYPE_AGR = 'dekzand',
+    B_GWL_CLASS = 'IV',
+    D_SOM_BAL = 1115,
+    D_CP_GRASS = 1,
+    D_CP_POTATO = 0,
+    D_CP_RUST = 0,
+    D_CP_RUSTDEEP = 0,
+    D_GA = 5,
+    M_GREEN = FALSE,
+    M_NONBARE = FALSE,
+    M_EARLYCROP = FALSE,
+    M_SLEEPHOSE = FALSE,
+    M_DRAIN = FALSE,
+    M_DITCH = FALSE,
+    M_UNDERSEED = FALSE,
+    M_LIME = FALSE,
+    M_NONINVTILL = FALSE,
+    M_SSPM = FALSE,
+    M_SOLIDMANURE = FALSE,
+    M_STRAWRESIDUE = FALSE,
+    M_MECHWEEDS = FALSE,
+    M_PESTICIDES_DST = FALSE)
+
+  no_compost <- do.call(calc_management, c(args, list(M_COMPOST = 0)))
+
+  # every frequency > 0 should be credited, not only M_COMPOST == 1
+  for (frequency in c(1, 3, 5, 25)) {
+    expect_equal(
+      do.call(calc_management, c(args, list(M_COMPOST = frequency))),
+      no_compost + 1
+    )
+  }
+})
