@@ -1,3 +1,10 @@
+# OBIC 4.3.1
+## Fixed
+* `calc_management()` and `calc_man_ess()` only credited compost on grassland when
+`M_COMPOST` was exactly 1. Since `M_COMPOST` is a frequency in years, `M_COMPOST == TRUE`
+compared it against 1, so applying compost every 3 or 5 years scored as no compost at all.
+Grassland now uses `M_COMPOST > 0`, matching the arable, maize and nature branches.
+
 # OBIC 4.3.0 2026-07-02
 ## Added
 * New cultivations for BRP 2026 to `crops.obic` [crop_name (crop_code)]:
