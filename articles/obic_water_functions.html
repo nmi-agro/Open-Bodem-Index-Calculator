@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">OBIC</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">4.2.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">4.4.0</span>
       </span>
     </div>
 
@@ -71,7 +71,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/AgroCares/Open-Bodem-Index-Calculator/" class="external-link">
+  <a href="https://github.com/nmi-agro/Open-Bodem-Index-Calculator/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
 
   </a>
@@ -91,15 +91,20 @@
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Description of the OBI-water functions</h1>
             
-            <h4 data-toc-skip class="date">2026-02-03</h4>
+            <h4 data-toc-skip class="date">2026-10-20</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/AgroCares/Open-Bodem-Index-Calculator/blob/v4.2.2/vignettes/obic_water_functions.Rmd" class="external-link"><code>vignettes/obic_water_functions.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/nmi-agro/Open-Bodem-Index-Calculator/blob/master/vignettes/obic_water_functions.Rmd" class="external-link"><code>vignettes/obic_water_functions.Rmd</code></a></small>
       <div class="hidden name"><code>obic_water_functions.Rmd</code></div>
 
     </div>
 
     
     
+<pre><code><span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Attaching package: 'data.table'</span></span>
+<span><span class="co">#&gt; The following object is masked from 'package:base':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     %notin%</span></span></code></pre>
 <div class="section level3">
 <h3 id="intorduction">Intorduction<a class="anchor" aria-label="anchor" href="#intorduction"></a>
 </h3>
@@ -329,21 +334,22 @@ calibration of this indicator score.
 <div class="section level2">
 <h2 class="unnumbered" id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
 </h2>
-<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-CommissieDeskundigenMeststoffenwet2017" class="csl-entry">
-Commissie Deskundigen Meststoffenwet. 2017. <span>“<span class="nocase">CDM-advies ‘Groenbemesters’ 17-02-2017</span>.”</span>
-Wageningen: WOT Natuur &amp; Milieu. <a href="https://edepot.wur.nl/703965" class="external-link">https://edepot.wur.nl/703965</a>.
+Commissie Deskundigen Meststoffenwet. 2017. <em><span class="nocase">CDM-advies ‘Groenbemesters’ 17-02-2017</span></em>. WOT
+Natuur &amp; Milieu. <a href="https://edepot.wur.nl/703965" class="external-link">https://edepot.wur.nl/703965</a>.
 </div>
 <div id="ref-Geurts2021" class="csl-entry">
-Geurts, J, A van Loon, and G Ros. 2021. <span>“<span class="nocase">Gezonde bodem , gezond watersysteem, BTO rapport
-2021.026</span>.”</span> Nieuwegein: KWR. <a href="https://www.nmi-agro.nl/wp-content/uploads/2022/08/geurts_2021_gezond.pdf" class="external-link">https://www.nmi-agro.nl/wp-content/uploads/2022/08/geurts_2021_gezond.pdf</a>.
+Geurts, J, A van Loon, and G Ros. 2021. <em><span class="nocase">Gezonde
+bodem , gezond watersysteem, BTO rapport 2021.026</span></em>. KWR. <a href="https://www.nmi-agro.nl/wp-content/uploads/2022/08/geurts_2021_gezond.pdf" class="external-link">https://www.nmi-agro.nl/wp-content/uploads/2022/08/geurts_2021_gezond.pdf</a>.
 </div>
 <div id="ref-Groenendijk2016" class="csl-entry">
 Groenendijk, Piet, Erwin van Boekel, Leo Renaud, Auke Greijdanus, Rolf
-Michels, and Tanja de Koeijer. 2016. <span>“<span class="nocase">Landbouw en de KRW-opgave voor nutriënten in regionale
-wateren : het aandeel van landbouw in de KRW-opgave, de kosten van
-enkele maatregelen en de effecten ervan op de uit- en afspoeling uit
-landbouwgronden</span>.”</span> Wageningen: WenR. <a href="https://edepot.wur.nl/392093" class="external-link">https://edepot.wur.nl/392093</a>.
+Michels, and Tanja de Koeijer. 2016. <em><span class="nocase">Landbouw
+en de KRW-opgave voor nutriënten in regionale wateren : het aandeel van
+landbouw in de KRW-opgave, de kosten van enkele maatregelen en de
+effecten ervan op de uit- en afspoeling uit landbouwgronden</span></em>.
+WenR. <a href="https://edepot.wur.nl/392093" class="external-link">https://edepot.wur.nl/392093</a>.
 </div>
 <div id="ref-Tiktak2006" class="csl-entry">
 Tiktak, A., J. J. T. I. Boesten, A. M. A. van der Linden, and M.
@@ -353,16 +359,15 @@ EuroPEARL.</span>”</span> <em>Journal of Environmental Quality</em> 35
 (4): 1213–26. <a href="https://www.researchgate.net/profile/Aaldrik-Tiktak/publication/40114135_Mapping_the_vulnerability_of_European_groundwater_to_the_leaching_of_pesticides_with_a_process-based_metamodel_of_EuroPEARL/links/54a688c60cf257a6360a4923/Mapping-the-vulnerability-of-European-groundwater-to-the-leaching-of-pesticides-with-a-process-based-metamodel-of-EuroPEARL.pdf" class="external-link">https://www.researchgate.net/profile/Aaldrik-Tiktak/publication/40114135_Mapping_the_vulnerability_of_European_groundwater_to_the_leaching_of_pesticides_with_a_process-based_metamodel_of_EuroPEARL/links/54a688c60cf257a6360a4923/Mapping-the-vulnerability-of-European-groundwater-to-the-leaching-of-pesticides-with-a-process-based-metamodel-of-EuroPEARL.pdf</a>.
 </div>
 <div id="ref-TNO1988" class="csl-entry">
-TNO, and Commissie voor Hydorlogisch Onderzoek. 1988. <span>“<span class="nocase">Van penman naar Makkink - Een nieuwe berekeningswijze
-voor klimatologische verdampingsgetallen</span>.”</span> ’s Gravenhage:
-TNO. <a href="https://edepot.wur.nl/182292" class="external-link">https://edepot.wur.nl/182292</a>.
+TNO, and Commissie voor Hydorlogisch Onderzoek. 1988. <em><span class="nocase">Van penman naar Makkink - Een nieuwe berekeningswijze
+voor klimatologische verdampingsgetallen</span></em>. TNO. <a href="https://edepot.wur.nl/182292" class="external-link">https://edepot.wur.nl/182292</a>.
 </div>
 <div id="ref-Wosten2001" class="csl-entry">
 Wösten, J. H. M., G. J. Veerman, W. J. M. de Groot, and J. Stolte. 2001.
-<span>“<span class="nocase">Waterretentie- en
+<em><span class="nocase">Waterretentie- en
 doorlatendheidskarakteristieken van boven- en ondergronden in Nederland:
-de Staringreeks</span>.”</span> Wageningen: Alterra, Research Instituut
-voor de Groene Ruimte. <a href="https://edepot.wur.nl/43272" class="external-link">https://edepot.wur.nl/43272</a>.
+de Staringreeks</span></em>. Alterra, Research Instituut voor de Groene
+Ruimte. <a href="https://edepot.wur.nl/43272" class="external-link">https://edepot.wur.nl/43272</a>.
 </div>
 </div>
 </div>
@@ -383,7 +388,7 @@ voor de Groene Ruimte. <a href="https://edepot.wur.nl/43272" class="external-lin
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
       </footer>

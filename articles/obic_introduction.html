@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">OBIC</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">4.2.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">4.4.0</span>
       </span>
     </div>
 
@@ -71,7 +71,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/AgroCares/Open-Bodem-Index-Calculator/" class="external-link">
+  <a href="https://github.com/nmi-agro/Open-Bodem-Index-Calculator/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
 
   </a>
@@ -93,9 +93,9 @@
                         <h4 data-toc-skip class="author">Gerard Ros,
 Brent Riechelman</h4>
             
-            <h4 data-toc-skip class="date">2026-02-03</h4>
+            <h4 data-toc-skip class="date">2026-10-20</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/AgroCares/Open-Bodem-Index-Calculator/blob/v4.2.2/vignettes/obic_introduction.Rmd" class="external-link"><code>vignettes/obic_introduction.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/nmi-agro/Open-Bodem-Index-Calculator/blob/master/vignettes/obic_introduction.Rmd" class="external-link"><code>vignettes/obic_introduction.Rmd</code></a></small>
       <div class="hidden name"><code>obic_introduction.Rmd</code></div>
 
     </div>
@@ -150,10 +150,9 @@ science, and farmer groups collaborated to bring together existing data
 from routine soil laboratories, smart data retrieval from satellites,
 and insights from fundamental and applied research, in a transparent and
 scientifically underpinned soil assessment framework. The framework is
-highly influenced by the Soil Management Assessment Framework <span class="citation">(Andrews and Carroll 2001; Wienhold, Andrews, and
-Karlen 2004; Wienhold et al. 2009)</span> and the proposed holistic,
-multivariate soil health framework from <span class="citation">Rinot et
-al. (2019)</span>.</p>
+highly influenced by the Soil Management Assessment Framework <span class="citation">(Andrews and Carroll 2001; Wienhold et al. 2004,
+2009)</span> and the proposed holistic, multivariate soil health
+framework from <span class="citation">Rinot et al. (2019)</span>.</p>
 </div>
 <div class="section level4">
 <h4 id="the-open-soil-index-framework">The Open Soil Index Framework<a class="anchor" aria-label="anchor" href="#the-open-soil-index-framework"></a>
@@ -222,8 +221,7 @@ measurements (all variables starting with “A_”)</li>
 <li>measurements done via a Visual Soil Assessment Form (optional, all
 variables starting with “A_” and ending with “BCS”). For details, see
 the Assessment Form of the <a href="https://mijnbodemconditie.nl/download/" class="external-link">Bodemconditiescore</a>
-<span class="citation">(Sonneveld, Heuvelink, and Moolenaar
-2014)</span>.</li>
+<span class="citation">(Sonneveld et al. 2014)</span>.</li>
 <li>soil management measures taken (optional, all variables starting
 with “M_”)</li>
 </ul>
@@ -871,11 +869,10 @@ sandblasting.</p>
 from those properties controlling the susceptibility for both risks.
 These include the clay content as well as the organic matter content,
 where the vulnerability for sealing is derived from field expert-based
-observations and associated yield depression <span class="citation">(J.
-Th. M. Huinink 2018; Heeres and Erp 1999)</span> in particular for some
-arable crops. The presence of soil sealing can be estimated via the
-function <code>calc_sealing_risk</code> whereas the risk for soil
-erosion due to wind is estimated via the function
+observations and associated yield depression <span class="citation">(Huinink 2018; Heeres and Erp 1999)</span> in
+particular for some arable crops. The presence of soil sealing can be
+estimated via the function <code>calc_sealing_risk</code> whereas the
+risk for soil erosion due to wind is estimated via the function
 <code>calc_winderodibility</code>. The wind erodibility can be estimated
 from the inputs land use, clay and silt content of the topsoil whereas
 the risk for sealing depends on the clay content as well as the organic
@@ -917,7 +914,7 @@ poorer.</p>
 <p>Similarly to the vulnerability to sealing and wind erodibility, the
 crumbleability of a soil (a measure for aggregate stability) as well as
 the potential risk for yield depressions (crop specific) can be derived
-from the clay content, the organic matter content, and the pH <span class="citation">(J. Th. M. Huinink 2011)</span>. Aggregate stability is
+from the clay content, the organic matter content, and the pH <span class="citation">(Huinink 2011)</span>. Aggregate stability is
 additionally evaluated given the cation occupation of the cation
 exchange capacity. Clayey soils with 80% Ca, 8% Mg, and about 3.5% K are
 recognized as soils with more stable aggregates due to the influence of
@@ -976,14 +973,13 @@ of this risk assessment map.</p>
 </h4>
 <p>Within the OBIC, the estimates of aggregate stability and risk of
 subsoil compaction can be adapted to local site specific insights
-derived from the Visual Soil Assessment Methodology <span class="citation">(Sonneveld, Heuvelink, and Moolenaar 2014)</span>.
-Visual soil assessments (VSA) is an assessment of soil quality in the
-field, by digging a hole and assessing several soil quality indicators
-visually. Soil quality indicators are: grass cover, number of roots,
-number of biopores, soil color, soil structure, soil compaction, and
-number of gray spots. Visual soil assessments are more and more used by
-farmers in the Netherlands, but not specifically developed for various
-soil types.</p>
+derived from the Visual Soil Assessment Methodology <span class="citation">(Sonneveld et al. 2014)</span>. Visual soil assessments
+(VSA) is an assessment of soil quality in the field, by digging a hole
+and assessing several soil quality indicators visually. Soil quality
+indicators are: grass cover, number of roots, number of biopores, soil
+color, soil structure, soil compaction, and number of gray spots. Visual
+soil assessments are more and more used by farmers in the Netherlands,
+but not specifically developed for various soil types.</p>
 <p>Below is illustrated how the obic_field wrapper deals with the
 parameters derived from the VSA methodology. The score derived from the
 original risk assessment map for subsoil compaction is overwritten with
@@ -1046,11 +1042,11 @@ present as a film around individual soil particles. The potential under
 these conditions is around -18 bar. The amount of moisture present
 between field capacity and wilting point is defined as the amount of
 plant-available water.</p>
-<p>The review study of various soil health instruments <span class="citation">(E. K. Bünemann et al. 2016)</span> identifies a
-variety of indicators that can be used to gain more insight into the
-water retaining capacity of a soil. Frequently used indicators are the
-amount of plant-available water (14 x), the water holding capacity (11
-x), the moisture content at field capacity (11 x), and the saturated
+<p>The review study of various soil health instruments <span class="citation">(Bünemann et al. 2016)</span> identifies a variety of
+indicators that can be used to gain more insight into the water
+retaining capacity of a soil. Frequently used indicators are the amount
+of plant-available water (14 x), the water holding capacity (11 x), the
+moisture content at field capacity (11 x), and the saturated
 permeability (10 x). These indicators can be measured or estimated
 indirectly via so-called pedotransfer functions <span class="citation">(Wösten et al. 2001)</span>.</p>
 <p>The OBIC includes functions to derive the following water-related
@@ -1676,30 +1672,27 @@ soil function.</p>
 <div class="section level2">
 <h2 class="unnumbered" id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
 </h2>
-<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-Andrews2001" class="csl-entry">
 Andrews, Susan S, and C Ronald Carroll. 2001. <span>“<span class="nocase">Designing a soil quality assessment tool for sustainable
 agroecosystem management</span>.”</span> <em>Ecological
 Applications</em> 11 (6): 1573–85.
 </div>
 <div id="ref-R-data.table" class="csl-entry">
-Barrett, Tyson, Matt Dowle, Arun Srinivasan, Jan Gorecki, Michael
-Chirico, Toby Hocking, Benjamin Schwendinger, and Ivan Krylov. 2025.
+Barrett, Tyson, Matt Dowle, Arun Srinivasan, et al. 2025.
 <em>Data.table: Extension of ‘Data.frame‘</em>. <a href="https://r-datatable.com" class="external-link">https://r-datatable.com</a>.
 </div>
 <div id="ref-Bunemann2016" class="csl-entry">
-Bünemann, E K, P Mäder, J Wohlfahrt, L Brussaard, G Bongiorno, R De
-Goede, V Geissen, L Fleskens, W Sukkel, and Z Bai. 2016. <span>“<span class="nocase">Concepts and indicators of soil quality-a
+Bünemann, E K, P Mäder, J Wohlfahrt, et al. 2016. <span>“<span class="nocase">Concepts and indicators of soil quality-a
 review</span>.”</span> <em>Interactive Soil Quality Assessment in Europe
 and China for Agricultural Productivity and Environmental
 Resilience</em>, 1–76.
 </div>
 <div id="ref-Bunemann2018" class="csl-entry">
-Bünemann, Else K, Giulia Bongiorno, Zhanguo Bai, Rachel E Creamer,
-Gerlinde De Deyn, Ron de Goede, Luuk Fleskens, Violette Geissen, Thom W
-Kuyper, and Paul Mäder. 2018. <span>“<span class="nocase">Soil quality–A
-critical review</span>.”</span> <em>Soil Biology and Biochemistry</em>
-120: 105–25.
+Bünemann, Else K, Giulia Bongiorno, Zhanguo Bai, et al. 2018.
+<span>“<span class="nocase">Soil quality–A critical
+review</span>.”</span> <em>Soil Biology and Biochemistry</em> 120:
+105–25.
 </div>
 <div id="ref-Heeres1999" class="csl-entry">
 Heeres, E, and P J van Erp. 1999. <span>“<span class="nocase">Organic
@@ -1707,15 +1700,15 @@ matter in relation to the susceptability of agricultural soils to
 slaking</span>.”</span> <em>Meststoffen (Netherlands)</em>.
 </div>
 <div id="ref-Huinink2011" class="csl-entry">
-Huinink, J. Th. M. 2011. <span>“<span class="nocase">Bodemgeschiktheidsbeoordeling voor Landbouw , Bosbouw en
+Huinink, J. Th. M. 2011. <em><span class="nocase">Bodemgeschiktheidsbeoordeling voor Landbouw , Bosbouw en
 Recreatie: een optimalisatie van grondwater- en
-opppervlaktewaterpeilbeheer</span>.”</span> BodemConsult-Arnhem.
+opppervlaktewaterpeilbeheer</span></em>. BodemConsult-Arnhem.
 </div>
 <div id="ref-Huinink2018" class="csl-entry">
-Huinink, J.Th.M. 2018. <span>“<span class="nocase">Bodem/perceel
+Huinink, J.Th.M. 2018. <em><span class="nocase">Bodem/perceel
 geschiktheidsbeoordeling voor Landbouw, Bosbouw en Recreatie: t.b.v. een
 optimalisatie van grondwater- en oppervlaktewaterpeilbeheer: state of
-the art 2018</span>.”</span> BodemConsult-Arnhem.
+the art 2018</span></em>. BodemConsult-Arnhem.
 </div>
 <div id="ref-Locher1990" class="csl-entry">
 Locher, W P, and H De Bakker. 1990. <em><span class="nocase">Bodemkunde
@@ -1727,8 +1720,7 @@ Pedersen, Thomas Lin. 2025. <em>Patchwork: The Composer of Plots</em>.
 </div>
 <div id="ref-R-base" class="csl-entry">
 R Core Team. 2025. <em>R: A Language and Environment for Statistical
-Computing</em>. Vienna, Austria: R Foundation for Statistical Computing.
-<a href="https://www.R-project.org/" class="external-link">https://www.R-project.org/</a>.
+Computing</em>. R Foundation for Statistical Computing. <a href="https://www.R-project.org/" class="external-link">https://www.R-project.org/</a>.
 </div>
 <div id="ref-Rinot2019" class="csl-entry">
 Rinot, Oshri, Guy J Levy, Yosef Steinberger, Tal Svoray, and Gil Eshel.
@@ -1743,15 +1735,14 @@ technique at site and farm level</span>.”</span> <em>Soil Use and
 Management</em> 30 (2): 263–71.
 </div>
 <div id="ref-R-OBIC" class="csl-entry">
-Verweij, Sven, Gerard Ros, Yuki Fujita, Wilbrand Hendrik Riechelman, and
-Kees van den Dool. 2025. <em>OBIC: Calculate the Open Bodem Index (OBI)
-Score</em>. <a href="https://github.com/AgroCares/Open-Bodem-Index-Calculator" class="external-link">https://github.com/AgroCares/Open-Bodem-Index-Calculator</a>.
+<span class="nocase">Verweij, Sven, Gerard Ros, Yuki Fujita, Wilbrand
+Hendrik Riechelman, and Kees van den Dool</span>. 2025. <em>OBIC:
+Calculate the Open Bodem Index (OBI) Score</em>. <a href="https://github.com/nmi-agro/Open-Bodem-Index-Calculator" class="external-link">https://github.com/nmi-agro/Open-Bodem-Index-Calculator</a>.
 </div>
 <div id="ref-R-ggplot2" class="csl-entry">
-Wickham, Hadley, Winston Chang, Lionel Henry, Thomas Lin Pedersen,
-Kohske Takahashi, Claus Wilke, Kara Woo, Hiroaki Yutani, Dewey
-Dunnington, and Teun van den Brand. 2025. <em>Ggplot2: Create Elegant
-Data Visualisations Using the Grammar of Graphics</em>. <a href="https://ggplot2.tidyverse.org" class="external-link">https://ggplot2.tidyverse.org</a>.
+<span class="nocase">Wickham, Hadley, Winston Chang, Lionel Henry, et
+al.</span> 2025. <em>Ggplot2: Create Elegant Data Visualisations Using
+the Grammar of Graphics</em>. <a href="https://ggplot2.tidyverse.org" class="external-link">https://ggplot2.tidyverse.org</a>.
 </div>
 <div id="ref-Wienhold2004" class="csl-entry">
 Wienhold, Brian J, S S Andrews, and D L Karlen. 2004. <span>“<span class="nocase">Soil quality: a review of the science and experiences in
@@ -1766,9 +1757,9 @@ Agriculture and Food Systems</em>, 260–66.
 </div>
 <div id="ref-Wosten2001" class="csl-entry">
 Wösten, J. H. M., J. G. Veerman, W. J. M. de Groot, and J. Stolte. 2001.
-<span>“<span class="nocase">Waterretentie- en doorlatendheids-
+<em><span class="nocase">Waterretentie- en doorlatendheids-
 karakteristieken van boven en ondergronden in Nederland: de
-Staringreeks</span>.”</span> Wageningen: Alterra. <a href="https://edepot.wur.nl/43272" class="external-link">https://edepot.wur.nl/43272</a>.
+Staringreeks</span></em>. Alterra. <a href="https://edepot.wur.nl/43272" class="external-link">https://edepot.wur.nl/43272</a>.
 </div>
 </div>
 </div>
@@ -1789,7 +1780,7 @@ Staringreeks</span>.”</span> Wageningen: Alterra. <a href="https://edepot.wur.
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
       </footer>
