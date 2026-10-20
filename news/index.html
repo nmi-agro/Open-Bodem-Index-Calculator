@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">OBIC</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">4.4.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">4.4.1</span>
       </span>
     </div>
 
@@ -69,6 +69,14 @@
       <small>Source: <a href="https://github.com/nmi-agro/Open-Bodem-Index-Calculator/blob/master/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="4.4.1" id="obic-441-2026-10-20">OBIC 4.4.1 2026-10-20<a class="anchor" aria-label="anchor" href="#obic-441-2026-10-20"></a></h2>
+<div class="section level3">
+<h3 id="fixed-4-4-1">Fixed<a class="anchor" aria-label="anchor" href="#fixed-4-4-1"></a></h3>
+<ul><li>
+<code><a href="../reference/calc_management.html">calc_management()</a></code> and <code><a href="../reference/calc_man_ess.html">calc_man_ess()</a></code> only credited compost on grassland when <code>M_COMPOST</code> was exactly 1. Since <code>M_COMPOST</code> is a frequency in years, <code>M_COMPOST == TRUE</code> compared it against 1, so applying compost every 3 or 5 years scored as no compost at all. Grassland now uses <code>M_COMPOST &gt; 0</code>, matching the arable, maize and nature branches.</li>
+</ul></div>
+</div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="4.4.0" id="obic-440-2026-10-16">OBIC 4.4.0 2026-10-16<a class="anchor" aria-label="anchor" href="#obic-440-2026-10-16"></a></h2>
 <div class="section level3">
