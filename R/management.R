@@ -246,7 +246,7 @@ calc_management <- function(A_SOM_LOI,B_LU_BRP, B_SOILTYPE_AGR,B_GWL_CLASS,
     dt.grass[M_SLEEPHOSE==TRUE, value := value + 1]
   
     # measure 7. are soils also receiving solid manure or compost 
-    dt.grass[M_SOLIDMANURE == TRUE | M_COMPOST == TRUE, value := value + 1]
+    dt.grass[M_SOLIDMANURE == TRUE | M_COMPOST > 0, value := value + 1]
     
     # measure 8. are soil protection measures taken?
     dt.grass[M_SSPM == TRUE, value := value + 1]
@@ -679,7 +679,7 @@ calc_man_ess <- function(A_SOM_LOI,B_LU_BRP, B_SOILTYPE_AGR,B_GWL_CLASS,
       dt.grass.man[M_SLEEPHOSE==TRUE, value_ms := value_ms + 1]
       
       # measure 7. are soils also receiving solid manure or compost 
-      dt.grass.man[M_SOLIDMANURE == TRUE | M_COMPOST == TRUE, value_ms := value_ms + 1]
+      dt.grass.man[M_SOLIDMANURE == TRUE | M_COMPOST > 0, value_ms := value_ms + 1]
       
       # measure 8. are soil protection measures taken?
       dt.grass.man[M_SSPM == TRUE, value_ms := value_ms + 1]
