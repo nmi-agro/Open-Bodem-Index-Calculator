@@ -9,7 +9,7 @@ test_that("whether ind_gw_recharge works", {
       B_SC_WENR = rep(c('Zeer groot', 'Zeer beperkt'), 3),
       D_SE = c(1, 1, 1, 6.049445, 6.049445, 6.049445)
     ),
-    expected = c(0.190, 0.585, 0.5656138, 0.9628, 0.505, 0.9557414),
+    expected = c(0.190, 0.585, 0.4242104, 0.9628, 0.505, 0.9557414),
     tolerance = 0.01
   )
 
@@ -30,17 +30,15 @@ gwr_drain_test <- function(B_DRAIN, B_GWL_GHG = NULL, B_GWL_CLASS = NULL){
   )
 }
 
-test_that("B_DRAIN affects scores only when B_GWL_GHG <= 80", {
-  # drainage reduces the score when GHG <= 80 cm
+test_that("B_DRAIN affects scores regardless of B_GWL_GHG", {
+  ghg <- c(0, 50, 80, 81, 120, 250)
+  # drainage reduces the score at any GHG
   expect_all_true(
-    gwr_drain_test(TRUE, B_GWL_GHG = c(0, 50, 80)) <
-      gwr_drain_test(FALSE, B_GWL_GHG = c(0, 50, 80))
+    gwr_drain_test(TRUE, B_GWL_GHG = ghg) < gwr_drain_test(FALSE, B_GWL_GHG = ghg)
   )
-  # drainage has no effect when GHG > 80 cm
-  expect_equal(
-    gwr_drain_test(TRUE, B_GWL_GHG = c(81, 120, 250)),
-    gwr_drain_test(FALSE, B_GWL_GHG = c(81, 120, 250))
-  )
+  # GHG itself does not affect the score
+  expect_equal(length(unique(gwr_drain_test(TRUE, B_GWL_GHG = ghg))), 1)
+  expect_equal(length(unique(gwr_drain_test(FALSE, B_GWL_GHG = ghg))), 1)
 })
 
 test_that("deprecated B_GWL_CLASS still works and gives a warning", {
@@ -49,20 +47,14 @@ test_that("deprecated B_GWL_CLASS still works and gives a warning", {
     regexp = 'deprecated'
   )
 
-  # classes I to VId, except IVc, are affected by drainage
-  cl.drain <- c("I", "Ia", "Ic", "II", "IIa", "IIb", "IIc", "III", "IIIa", "IIIb",
-                "IV", "IVu", "V", "sV", "sVb", "Va", "Vao", "Vad",
-                "Vb", "Vbo", "Vbd", "VI", "VIo", "VId")
+  # all classes are affected by drainage
+  cl.all <- c("I", "Ia", "Ic", "II", "IIa", "IIb", "IIc", "III", "IIIa", "IIIb",
+              "IV", "IVu", "IVc", "V", "sV", "sVb", "Va", "Vao", "Vad",
+              "Vb", "Vbo", "Vbd", "VI", "VIo", "VId",
+              "VII", "VIIo", "VIId", "VIII", "VIIIo", "VIIId")
   expect_all_true(
-    suppressWarnings(gwr_drain_test(TRUE, B_GWL_CLASS = cl.drain)) <
-      suppressWarnings(gwr_drain_test(FALSE, B_GWL_CLASS = cl.drain))
-  )
-
-  # classes IVc, VII and VIII are not affected by drainage
-  cl.nodrain <- c("IVc", "VII", "VIIo", "VIId", "VIII", "VIIIo", "VIIId")
-  expect_equal(
-    suppressWarnings(gwr_drain_test(TRUE, B_GWL_CLASS = cl.nodrain)),
-    suppressWarnings(gwr_drain_test(FALSE, B_GWL_CLASS = cl.nodrain))
+    suppressWarnings(gwr_drain_test(TRUE, B_GWL_CLASS = cl.all)) <
+      suppressWarnings(gwr_drain_test(FALSE, B_GWL_CLASS = cl.all))
   )
 })
 
@@ -70,10 +62,6 @@ test_that("B_GWL_GHG is used when both B_GWL_GHG and B_GWL_CLASS are provided", 
   expect_warning(
     gwr_drain_test(TRUE, B_GWL_GHG = 40, B_GWL_CLASS = 'VIII'),
     regexp = 'only B_GWL_GHG will be used'
-  )
-  expect_equal(
-    suppressWarnings(gwr_drain_test(TRUE, B_GWL_GHG = c(40, 120), B_GWL_CLASS = c('VIII', 'IIa'))),
-    gwr_drain_test(TRUE, B_GWL_GHG = c(40, 120))
   )
 })
 
@@ -208,7 +196,7 @@ test_that('D_P_CO is favoured over B_SC_WENR',{
         B_LU_BRP = 2014,
         D_PSP = 400,
         D_WRI_K = 50,
-        B_DRAIN = TRUE,
+        B_DRAIN = FALSE, # compaction is only corrected for on undrained fields
         B_GWL_GHG = 100,
         B_SC_WENR = 'Groot',
         D_SE = 25,
@@ -219,7 +207,7 @@ test_that('D_P_CO is favoured over B_SC_WENR',{
         B_LU_BRP = 2014,
         D_PSP = 400,
         D_WRI_K = 50,
-        B_DRAIN = TRUE,
+        B_DRAIN = FALSE,
         B_GWL_GHG = 100,
         B_SC_WENR = 'Groot',
         D_SE = 25

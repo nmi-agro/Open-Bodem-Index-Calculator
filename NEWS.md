@@ -1,3 +1,11 @@
+# OBIC 4.4.3 2026-11-24
+## Changed
+* The drainage correction in `ind_gw_recharge()` now applies to all drained fields
+(`B_DRAIN = TRUE`), regardless of the groundwater level. Previously it only applied when
+`B_GWL_GHG <= 80` cm. Scores for groundwater recharge of drained fields with a GHG deeper
+than 80 cm (or groundwater table class IVc, VII or VIII) will decrease.
+`B_GWL_GHG` is no longer used in the calculation, but is still required as input.
+
 # OBIC 4.4.2 2026-11-03
 ## Fixed
 * Replaced a A_P_CC term with A_P_AL in the calculation of D_C_P (PBI) for

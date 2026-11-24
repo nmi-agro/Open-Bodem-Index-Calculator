@@ -55,12 +55,11 @@ D_P_CO = (3 x A_EW_BCS + 3 x A_SC_BCS + 3 x A_RD_BCS  - 2 x A_P_BCS - A_RT_BCS)/
 the .*_BCS variables have the values 0, 1, or 2. When both B_SC_WENR and D_P_CO
 are provided, D_P_CO is used as it is considered more accurate determination of compaction.
 
-Drainage reduces groundwater recharge when the field is drained (B_DRAIN = TRUE)
-and the mean highest groundwater level is at most 80 cm below ground level
-(B_GWL_GHG <= 80), following BLN3. The argument B_GWL_CLASS is deprecated. When only
-B_GWL_CLASS is provided, B_GWL_GHG is estimated from the groundwater table class,
-such that classes I to VId (except IVc) are considered to have B_GWL_GHG <= 80. When both are
-provided, only B_GWL_GHG is used.
+Drainage reduces groundwater recharge whenever the field is drained (B_DRAIN = TRUE),
+regardless of the groundwater level. B_GWL_GHG is currently not used in the
+calculation, but is still required as input. The argument B_GWL_CLASS is deprecated.
+When only B_GWL_CLASS is provided, B_GWL_GHG is estimated from the groundwater table class.
+When both are provided, only B_GWL_GHG is used.
 }
 \examples{
 ind_gw_recharge(B_LU_BRP = 265, D_PSP = 200, D_WRI_K = 10, B_DRAIN = FALSE,

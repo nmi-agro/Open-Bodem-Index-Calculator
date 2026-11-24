@@ -29,12 +29,11 @@
 #' the .*_BCS variables have the values 0, 1, or 2. When both B_SC_WENR and D_P_CO
 #' are provided, D_P_CO is used as it is considered more accurate determination of compaction.
 #'
-#' Drainage reduces groundwater recharge when the field is drained (B_DRAIN = TRUE)
-#' and the mean highest groundwater level is at most 80 cm below ground level
-#' (B_GWL_GHG <= 80), following BLN3. The argument B_GWL_CLASS is deprecated. When only
-#' B_GWL_CLASS is provided, B_GWL_GHG is estimated from the groundwater table class,
-#' such that classes I to VId (except IVc) are considered to have B_GWL_GHG <= 80. When both are
-#' provided, only B_GWL_GHG is used.
+#' Drainage reduces groundwater recharge whenever the field is drained (B_DRAIN = TRUE),
+#' regardless of the groundwater level. B_GWL_GHG is currently not used in the
+#' calculation, but is still required as input. The argument B_GWL_CLASS is deprecated.
+#' When only B_GWL_CLASS is provided, B_GWL_GHG is estimated from the groundwater table class.
+#' When both are provided, only B_GWL_GHG is used.
 #'
 #' @return
 #' The evaluated score for the soil function to improve groundwater recharge. A numeric value between 0 and 1.
@@ -141,9 +140,9 @@ ind_gw_recharge <- function(B_LU_BRP, D_PSP, D_WRI_K, I_P_SE = NULL, I_P_CO = NU
   } 
   
   # Correct for subsoil compaction or drainage
-  dt[B_DRAIN == TRUE & B_GWL_GHG <= 80,
+  dt[B_DRAIN == TRUE,
      c('cf_drain','cf_compaction') := list(0.6,1)]
-  dt[B_DRAIN == FALSE | B_GWL_GHG > 80,
+  dt[B_DRAIN == FALSE,
      c('cf_drain','cf_compaction') := list(1,fifelse(I_P_CO < 0.5,0.8,1))]
 
   # Calculate aggregated score
