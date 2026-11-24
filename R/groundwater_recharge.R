@@ -9,17 +9,17 @@
 #' @param I_P_SE (numeric) The indicator value for soil sealing (deprecated)
 #' @param I_P_CO (numeric) The indicator value for occurrence of subsoil compaction (deprecated)
 #' @param B_DRAIN (boolean) Are drains installed to drain the field (options: yes or no)
-#' @param B_GWL_CLASS (character) The groundwater table class (deprecated, provide B_GWL_GHG instead)
+#' @param B_GWL_CLASS (character) The groundwater table class (deprecated, not used)
 #' @param D_SE (numeric) The value of soil sealing calculated by \code{\link{calc_sealing_risk}}
 #' @param B_SC_WENR (character) The risk for subsoil compaction as derived from risk assessment study of Van den Akker (2006)
 #' @param D_P_CO (numeric) Compaction value based on visual soil assessment (see Details)
-#' @param B_GWL_GHG (numeric) The highest groundwater level averaged over the most wet periods in 8 years in cm below ground level
+#' @param B_GWL_GHG (numeric) The highest groundwater level averaged over the most wet periods in 8 years in cm below ground level (deprecated, not used)
 #'
 #' @examples
 #' ind_gw_recharge(B_LU_BRP = 265, D_PSP = 200, D_WRI_K = 10, B_DRAIN = FALSE,
-#'  B_GWL_GHG = 20, D_SE = 2, B_SC_WENR = 'Groot')
+#'  D_SE = 2, B_SC_WENR = 'Groot')
 #' ind_gw_recharge(B_LU_BRP = 233, D_PSP = 400, D_WRI_K = 10, B_DRAIN = TRUE,
-#'  B_GWL_GHG = 15, D_SE = 5, D_P_CO = 0.2)
+#'  D_SE = 5, D_P_CO = 0.2)
 #'
 #' @details
 #' Soil compaction risk can be assessed either with the soilcompaction risk map
@@ -29,12 +29,10 @@
 #' the .*_BCS variables have the values 0, 1, or 2. When both B_SC_WENR and D_P_CO
 #' are provided, D_P_CO is used as it is considered more accurate determination of compaction.
 #'
-#' Drainage reduces groundwater recharge when the field is drained (B_DRAIN = TRUE)
-#' and the mean highest groundwater level is at most 80 cm below ground level
-#' (B_GWL_GHG <= 80), following BLN3. The argument B_GWL_CLASS is deprecated. When only
-#' B_GWL_CLASS is provided, B_GWL_GHG is estimated from the groundwater table class,
-#' such that classes I to VId (except IVc) are considered to have B_GWL_GHG <= 80. When both are
-#' provided, only B_GWL_GHG is used.
+#' Drainage reduces groundwater recharge whenever the field is drained (B_DRAIN = TRUE),
+#' regardless of the groundwater level. The arguments B_GWL_GHG and B_GWL_CLASS are
+#' therefore deprecated: they are not used in the calculation and give a warning when
+#' provided. They will be removed in the next major release.
 #'
 #' @return
 #' The evaluated score for the soil function to improve groundwater recharge. A numeric value between 0 and 1.
@@ -47,27 +45,14 @@ ind_gw_recharge <- function(B_LU_BRP, D_PSP, D_WRI_K, I_P_SE = NULL, I_P_CO = NU
   I_E_GWR = D_I_WRI_K = cf_compaction = cf_drain = D_I_PSP = NULL
 
   # Check inputs
-  arg.length <- max(length(B_LU_BRP),length(D_WRI_K),length(D_PSP),length(I_P_SE),length(I_P_CO),length(B_DRAIN), length(D_SE), length(B_SC_WENR), length(B_GWL_GHG), length(B_GWL_CLASS))
+  arg.length <- max(length(B_LU_BRP),length(D_WRI_K),length(D_PSP),length(I_P_SE),length(I_P_CO),length(B_DRAIN), length(D_SE), length(B_SC_WENR))
 
-  if(is.null(B_GWL_GHG)){
-    if(is.null(B_GWL_CLASS)){
-      # if both groundwater arguments are missing, throw an error indicating B_GWL_GHG should be provided
-      checkmate::assert_numeric(B_GWL_GHG, lower = 0, any.missing = FALSE, len = arg.length)
-    } else {
-      warning('Use of B_GWL_CLASS in function ind_gw_recharge() is deprecated, provide B_GWL_GHG instead. B_GWL_GHG is now estimated from B_GWL_CLASS.')
-      checkmate::assert_character(B_GWL_CLASS, any.missing = FALSE, len = arg.length)
-      checkmate::assert_subset(B_GWL_CLASS, choices = c(
-        "I", "Ia", "Ic", "II", "IIa", "IIb", "IIc", "III", "IIIa", "IIIb", "IV",
-        "IVc", "IVu", "sV", "sVb", "V", "Va", "Vad", "Vao", "Vb", "Vbd", "Vbo", "VI",
-        "VId", "VII", "VIId", "VIII", "VIIId", "VIIIo", "VIIo", "VIo"
-      ), empty.ok = FALSE)
-      B_GWL_GHG <- est_gwl_ghg_from_class(B_GWL_CLASS)
-    }
-  } else {
-    checkmate::assert_numeric(B_GWL_GHG, lower = 0, any.missing = FALSE, len = arg.length)
-    if(!is.null(B_GWL_CLASS)){
-      warning('You have provided both B_GWL_GHG and the deprecated B_GWL_CLASS to ind_gw_recharge(), only B_GWL_GHG will be used.')
-    }
+  # groundwater level is not used anymore, warn when deprecated arguments are still supplied
+  if(!is.null(B_GWL_GHG)){
+    warning('Argument B_GWL_GHG of ind_gw_recharge() is deprecated and not used anymore. It will be removed in the next major release.')
+  }
+  if(!is.null(B_GWL_CLASS)){
+    warning('Argument B_GWL_CLASS of ind_gw_recharge() is deprecated and not used anymore. It will be removed in the next major release.')
   }
 
   if(is.null(D_SE)){
@@ -115,7 +100,6 @@ ind_gw_recharge <- function(B_LU_BRP, D_PSP, D_WRI_K, I_P_SE = NULL, I_P_CO = NU
                    I_P_SE = I_P_SE,
                    I_P_CO = I_P_CO,
                    B_DRAIN = B_DRAIN,
-                   B_GWL_GHG = B_GWL_GHG,
                    D_SE = D_SE,
                    B_SC_WENR = B_SC_WENR,
                    D_P_CO = D_P_CO)
@@ -141,9 +125,9 @@ ind_gw_recharge <- function(B_LU_BRP, D_PSP, D_WRI_K, I_P_SE = NULL, I_P_CO = NU
   } 
   
   # Correct for subsoil compaction or drainage
-  dt[B_DRAIN == TRUE & B_GWL_GHG <= 80,
+  dt[B_DRAIN == TRUE,
      c('cf_drain','cf_compaction') := list(0.6,1)]
-  dt[B_DRAIN == FALSE | B_GWL_GHG > 80,
+  dt[B_DRAIN == FALSE,
      c('cf_drain','cf_compaction') := list(1,fifelse(I_P_CO < 0.5,0.8,1))]
 
   # Calculate aggregated score
@@ -151,49 +135,6 @@ ind_gw_recharge <- function(B_LU_BRP, D_PSP, D_WRI_K, I_P_SE = NULL, I_P_CO = NU
 
   # Calculate mean
   out <- dt[,I_E_GWR]
-
-  return(out)
-}
-
-#' Estimate the mean highest groundwater level from the groundwater table class
-#'
-#' This function estimates B_GWL_GHG from B_GWL_CLASS. It is used for backwards
-#' compatibility of \code{\link{ind_gw_recharge}}, where B_GWL_CLASS is deprecated.
-#'
-#' @param B_GWL_CLASS (character) The groundwater table class
-#'
-#' @details
-#' The estimate is the midpoint of the GHG range of each groundwater table class.
-#' For classes with an open-ended GHG range up to class VId (Ic and IIc), the upper
-#' bound is set to 80 cm, so that classes I to VId (except IVc) have a GHG of at most 80 cm.
-#' Class IVc (GHG > 80 cm, GLG 80 - 120 cm) is set to 100 cm, so that IVc, VII and VIII
-#' have a GHG above 80 cm.
-#'
-#' @return
-#' The estimated mean highest groundwater level (B_GWL_GHG) in cm below ground level. A numeric value.
-#'
-#' @keywords internal
-est_gwl_ghg_from_class <- function(B_GWL_CLASS){
-
-  # lookup table with estimated GHG (cm below ground level) per groundwater table class
-  ghg <- c(
-    'I' = 10, 'Ia' = 12.5, 'Ic' = 52.5,
-    'II' = 15, 'IIa' = 12.5, 'IIb' = 32.5, 'IIc' = 60,
-    'III' = 20, 'IIIa' = 12.5, 'IIIb' = 32.5,
-    'IV' = 60, 'IVu' = 60, 'IVc' = 100,
-    'V' = 20, 'sV' = 20, 'sVb' = 32.5,
-    'Va' = 12.5, 'Vao' = 12.5, 'Vad' = 12.5,
-    'Vb' = 32.5, 'Vbo' = 32.5, 'Vbd' = 32.5,
-    'VI' = 60, 'VIo' = 60, 'VId' = 60,
-    'VII' = 110, 'VIIo' = 110, 'VIId' = 110,
-    'VIII' = 220, 'VIIIo' = 220, 'VIIId' = 220
-  )
-
-  # Check inputs
-  checkmate::assert_character(B_GWL_CLASS, any.missing = FALSE)
-  checkmate::assert_subset(B_GWL_CLASS, choices = names(ghg), empty.ok = FALSE)
-
-  out <- unname(ghg[B_GWL_CLASS])
 
   return(out)
 }
