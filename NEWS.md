@@ -4,7 +4,16 @@
 (`B_DRAIN = TRUE`), regardless of the groundwater level. Previously it only applied when
 `B_GWL_GHG <= 80` cm. Scores for groundwater recharge of drained fields with a GHG deeper
 than 80 cm (or groundwater table class IVc, VII or VIII) will decrease.
-`B_GWL_GHG` is no longer used in the calculation, but is still required as input.
+* `obic_field()` no longer passes `B_GWL_GHG` to `ind_gw_recharge()`.
+
+## Deprecated
+* Argument `B_GWL_GHG` of `ind_gw_recharge()` is deprecated and optional, as it is no longer
+used in the calculation. It gives a warning when provided and will be removed in the next major release.
+* Argument `B_GWL_CLASS` of `ind_gw_recharge()` is no longer used either: it now only gives a
+deprecation warning and is no longer converted to `B_GWL_GHG`. It will be removed in the next major release.
+
+## Removed
+* Internal function `est_gwl_ghg_from_class()`, which is no longer needed.
 
 # OBIC 4.4.2 2026-11-03
 ## Fixed

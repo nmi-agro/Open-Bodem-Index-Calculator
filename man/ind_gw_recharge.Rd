@@ -31,7 +31,7 @@ ind_gw_recharge(
 
 \item{B_DRAIN}{(boolean) Are drains installed to drain the field (options: yes or no)}
 
-\item{B_GWL_CLASS}{(character) The groundwater table class (deprecated, provide B_GWL_GHG instead)}
+\item{B_GWL_CLASS}{(character) The groundwater table class (deprecated, not used)}
 
 \item{D_SE}{(numeric) The value of soil sealing calculated by \code{\link{calc_sealing_risk}}}
 
@@ -39,7 +39,7 @@ ind_gw_recharge(
 
 \item{D_P_CO}{(numeric) Compaction value based on visual soil assessment (see Details)}
 
-\item{B_GWL_GHG}{(numeric) The highest groundwater level averaged over the most wet periods in 8 years in cm below ground level}
+\item{B_GWL_GHG}{(numeric) The highest groundwater level averaged over the most wet periods in 8 years in cm below ground level (deprecated, not used)}
 }
 \value{
 The evaluated score for the soil function to improve groundwater recharge. A numeric value between 0 and 1.
@@ -56,15 +56,14 @@ the .*_BCS variables have the values 0, 1, or 2. When both B_SC_WENR and D_P_CO
 are provided, D_P_CO is used as it is considered more accurate determination of compaction.
 
 Drainage reduces groundwater recharge whenever the field is drained (B_DRAIN = TRUE),
-regardless of the groundwater level. B_GWL_GHG is currently not used in the
-calculation, but is still required as input. The argument B_GWL_CLASS is deprecated.
-When only B_GWL_CLASS is provided, B_GWL_GHG is estimated from the groundwater table class.
-When both are provided, only B_GWL_GHG is used.
+regardless of the groundwater level. The arguments B_GWL_GHG and B_GWL_CLASS are
+therefore deprecated: they are not used in the calculation and give a warning when
+provided. They will be removed in the next major release.
 }
 \examples{
 ind_gw_recharge(B_LU_BRP = 265, D_PSP = 200, D_WRI_K = 10, B_DRAIN = FALSE,
- B_GWL_GHG = 20, D_SE = 2, B_SC_WENR = 'Groot')
+ D_SE = 2, B_SC_WENR = 'Groot')
 ind_gw_recharge(B_LU_BRP = 233, D_PSP = 400, D_WRI_K = 10, B_DRAIN = TRUE,
- B_GWL_GHG = 15, D_SE = 5, D_P_CO = 0.2)
+ D_SE = 5, D_P_CO = 0.2)
 
 }

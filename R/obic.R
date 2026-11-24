@@ -375,7 +375,6 @@ obic_field <- function(B_SOILTYPE_AGR,B_GWL_CLASS,B_SC_WENR,B_HELP_WENR,B_AER_CB
                                              D_PSP = D_PSP,
                                              D_WRI_K = D_WRI_K, 
                                              B_DRAIN = B_DRAIN,
-                                             B_GWL_GHG = B_GWL_GHG,
                                              D_SE = D_SE,
                                              B_SC_WENR = B_SC_WENR,
                                              D_P_CO = D_P_CO)]
